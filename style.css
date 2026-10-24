@@ -1,0 +1,299 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue: #5aaddd;
+  --dark-blue: #245779;
+  --pale-blue: #eaf7ff;
+  --light-blue: #dff3ff;
+  --white: #ffffff;
+}
+
+body {
+  min-height: 100vh;
+  padding: 24px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--dark-blue);
+  background: linear-gradient(
+    135deg,
+    #eaf8ff 0%,
+    #ccecff 50%,
+    #b8e1fa 100%
+  );
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  width: 100%;
+  padding: 36px 28px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 26px;
+  box-shadow: 0 18px 55px rgba(49, 115, 156, 0.15);
+  animation: fadeIn 0.65s ease;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.main-heart {
+  font-size: 48px;
+  margin-bottom: 18px;
+  animation: heartbeat 1.8s infinite;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+}
+
+h1 {
+  color: var(--dark-blue);
+  font-size: clamp(28px, 6vw, 42px);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.description {
+  max-width: 480px;
+  margin: 0 auto 24px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #58758a;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  color: var(--dark-blue);
+  background: #f8fcff;
+  border: 1px solid #c4e4f6;
+  border-radius: 13px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(90, 173, 221, 0.15);
+}
+
+button {
+  border: none;
+  border-radius: 13px;
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  touch-action: manipulation;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.primary-btn {
+  color: white;
+  background: var(--blue);
+  box-shadow: 0 6px 15px rgba(90, 173, 221, 0.2);
+}
+
+.primary-btn:hover {
+  background: #388fca;
+}
+
+#loginForm .primary-btn {
+  width: 100%;
+}
+
+.error {
+  min-height: 20px;
+  margin-top: 12px;
+  color: #c0394a;
+  font-size: 14px;
+}
+
+.footer-note {
+  margin-top: 24px;
+  color: #8aa7ba;
+  font-size: 13px;
+}
+
+.button-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  min-height: 90px;
+  position: relative;
+}
+
+.no-btn {
+  color: #47687d;
+  background: #e2edf4;
+}
+
+.letter-card {
+  text-align: center;
+}
+
+.letter {
+  margin-top: 24px;
+  padding: 26px 24px;
+  text-align: left;
+  background: #f1f9ff;
+  border: 1px solid #d7edfa;
+  border-radius: 20px;
+}
+
+.letter h2 {
+  margin-bottom: 22px;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #367fae;
+}
+
+.letter p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.95;
+  color: #42647b;
+  overflow-wrap: anywhere;
+}
+
+.letter p:last-of-type {
+  margin-bottom: 0;
+}
+
+.signature {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #d3e8f6;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #66869a;
+}
+
+.signature span {
+  color: #367fae;
+  font-weight: bold;
+}
+
+.ending {
+  margin-top: 24px;
+  font-size: 15px;
+  color: #6e9ab6;
+  font-style: italic;
+}
+
+/* Floating hearts */
+#hearts {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -45px;
+  color: rgba(65, 157, 210, 0.55);
+  animation: floatUp linear forwards;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) rotate(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  to {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px 10px;
+  }
+
+  .card {
+    padding: 28px 17px;
+    border-radius: 21px;
+  }
+
+  .letter {
+    padding: 21px 16px;
+  }
+
+  .letter h2 {
+    font-size: 21px;
+  }
+
+  .letter p {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .button-area {
+    gap: 12px;
+  }
+
+  button {
+    padding: 13px 18px;
+  }
+}
